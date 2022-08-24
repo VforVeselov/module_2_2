@@ -2,7 +2,7 @@ package org.example.lesson2.homework;
 
 import java.util.Arrays;
 
-public class MyList<T extends Number> {
+public class MyList<T extends Number> { // добавил проверку дженерика на тип, опционально добавляем только числа
     private T[] objects;
     private int size;
 
