@@ -25,11 +25,11 @@ public class HomeWork {
         ////////////////////
         //
         //
-        MyList<Integer> list = new MyList<>();
+        MyList<Number> list = new MyList<>();
         list.add(5);
         list.add(51);
         list.add(51);
-        list.add(51);
+        list.add(51.9);
 
 
     }
