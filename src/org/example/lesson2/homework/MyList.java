@@ -8,8 +8,6 @@ public class MyList<T> {
 
     public MyList() {
         this.objects = (T[]) new Object[3];
-        //this.size = objects.length;
-        //System.out.println(objects.length);
     }
 
     public void add(T element) {
@@ -28,7 +26,7 @@ public class MyList<T> {
             }
         }
         this.size++;
-        System.out.println(Arrays.toString(this.objects));
+        //System.out.println(Arrays.toString(this.objects));
     }
 
     public T[] getObjects() {
