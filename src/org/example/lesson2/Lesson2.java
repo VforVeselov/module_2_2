@@ -3,7 +3,6 @@ package org.example.lesson2;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 
 public class Lesson2 {
     public static void main(String[] args) {

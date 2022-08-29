@@ -1,7 +1,6 @@
-package org.example.lesson2;
+package org.example.lesson2.homework.task1;
 
-public class Homework1 {
-
+public class Runner {
     public static void main(String[] args) {
         //Задача №1
         //Создать интерфейсы flyable (метод void fly()), swimable (метод void swim), bitable (метод void bite)
@@ -17,13 +16,19 @@ public class Homework1 {
         //Создать по одному экземпляру на каждый класс.
         //Создать 2 экземпляра зоопарка и распределить животных по зоопаркам.
         //Никаких проверок if instanceof быть не должно, и внутри Zoo будут лежать Generics, а не интерфейсы.
-
-        //Задача №2
-        //Создать класс MyList с атрибутами T[] objects, int size. T - generics.
-        //Массив T[] будет создаваться при создании экземпляра класса MyList с размерностью 3.
-        //Создать метод add. Он будет добавлять элемент в массив object. Если в массиве уже 3 элемента есть, то нужно:
-        //1.Создать новый массив T[] с размерностью в два раза больше предыдущей.
-        //2.Скопировать со старого массива все значения в новый
-        //3.Присвоить экземпляру MyList новый массив.
+        Dog dog = new Dog();
+        Tiger tiger = new Tiger();
+        Eagle eagle = new Eagle();
+        Parrot parrot = new Parrot();
+        Shark shark = new Shark();
+        Fish fish = new Fish();
+        Zoo<Eagle, Dog, Shark> zoo1 = new Zoo<>(eagle, dog, shark);
+        Zoo<Parrot, Tiger, Fish> zoo2 = new Zoo<>();
+        zoo2.setBitable(tiger);
+        zoo2.setFlyable(parrot);
+        zoo2.setSwimable(fish);
+        zoo1.feedBitable();
+        zoo1.feedFlyable();
+        zoo1.feedSwimable();
     }
 }
