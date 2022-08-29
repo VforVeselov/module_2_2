@@ -1,8 +1,5 @@
 package org.example.lesson2.homework.task2;
 
-import java.util.Arrays;
-import java.util.Collections;
-
 public class MyList<T> {
     //Создать класс MyList с атрибутами T[] objects, int size. T - generics.
     //Массив T[] будет создаваться при создании экземпляра класса MyList с размерностью 3.

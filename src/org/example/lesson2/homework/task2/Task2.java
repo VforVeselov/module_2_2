@@ -1,7 +1,5 @@
 package org.example.lesson2.homework.task2;
 
-import java.util.Arrays;
-
 public class Task2 {
     public static void main(String[] args) {
         //Задача №2

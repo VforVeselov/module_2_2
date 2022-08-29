@@ -1,7 +1,5 @@
 package org.example.lesson2;
 
-import java.util.ArrayList;
-
 public class Homework1 {
 
     public static void main(String[] args) {
