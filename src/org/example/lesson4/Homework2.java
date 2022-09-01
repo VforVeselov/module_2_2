@@ -1,13 +1,23 @@
 package org.example.lesson4;
 
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Homework2 {
     public static void main(String[] args) {
         //Дан лист
         List<Integer> integers = List.of(1,2,3,4,5,5,8,8,9);
         Random random = new Random(1);
+
+        Integer result = integers
+                .stream()
+                .filter(e -> e > 4)
+                .distinct()
+                .map(e -> new myUser().setId(e))
+                .flatMap( e -> e.getList().stream())
+                .map(e -> e * 10)
+                .reduce((a,b) -> a + b).orElse(0);
+        System.out.println(result);
 
         //Задача №1
         //Создать класс пользователей, каждый из которых будет иметь порядковый номер, и список с числами
@@ -29,15 +39,30 @@ public class Homework2 {
         // Ожидаемый результат вывода на экран:
         // 1120 - из примера, 0 - при пустом листе
 
+
+
+
         List<List<Integer>> lists = List.of(List.of(1, 2), List.of(3, 4, 5), List.of());
         //Задача №2
         // 1. Отсортировать список lists так, чтобы сначала были самые большие списки по размеру
         // 2. Вывести на экран все элементы
         // Ожидаемый результат: 3,4,5,1,2
+        Comparator<List<Integer>> comparator = Comparator.comparing(obj -> obj.size());
+        lists.stream()
+                .sorted(comparator.reversed())
+                .collect(Collectors.toSet())
+                .forEach(e -> {
+                    e.stream().map( n -> n).forEach(System.out::println);
+                });
+        //lists.stream().sorted(comparator.reversed()).map(e->e.stream()).forEach(System.out::println);
+        Object[] l = lists.stream().sorted(comparator.reversed()).flatMap(Collection::stream).toArray();
+        System.out.println(Arrays.toString(l));
+        //System.out.println(Arrays.toString(lists.stream().sorted(comparator.reversed()).collect(Collectors.toList()).toArray()));
 
         //Задача №3
         // 1. Узнать, есть ли в lists хотя бы один список, который содержит сумму всех элементов вложенного листа
         // равную 12
+        System.out.println(lists.stream().anyMatch(e -> e.stream().mapToInt(Integer::intValue).sum() == 12));
 
     }
 }
