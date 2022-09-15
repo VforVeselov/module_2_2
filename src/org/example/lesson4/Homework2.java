@@ -1,12 +1,6 @@
 package org.example.lesson4;
 
-import org.example.lesson4.homework.User;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Homework2 {
     public static void main(String[] args) {
@@ -28,6 +22,16 @@ public class Homework2 {
                 .ifPresentOrElse(System.out::println, () -> System.out.println(0));
 
 
+        Integer result = integers
+                .stream()
+                .filter(e -> e > 4)
+                .distinct()
+                .map(e -> new myUser().setId(e))
+                .flatMap( e -> e.getList().stream())
+                .map(e -> e * 10)
+                .reduce((a,b) -> a + b).orElse(0);
+        System.out.println(result);
+
         //Задача №1
         //Создать класс пользователей, каждый из которых будет иметь порядковый номер, и список с числами
         //С помощью stream api:
@@ -48,29 +52,19 @@ public class Homework2 {
         // Ожидаемый результат вывода на экран:
         // 1120 - из примера, 0 - при пустом листе
 
+
+
+
         List<List<Integer>> lists = List.of(List.of(1, 2), List.of(3, 4, 5), List.of());
         //Задача №2
         // 1. Отсортировать список lists так, чтобы сначала были самые большие списки по размеру
         // 2. Вывести на экран все элементы
         // Ожидаемый результат: 3,4,5,1,2
-        List<Integer> sortedList = lists.stream()
-                .sorted((a, b) -> b.size() - a.size())
-                .flatMap(Collection::stream)
-                .collect(Collectors.toList());
-        System.out.println(sortedList);
+
 
         //Задача №3
         // 1. Узнать, есть ли в lists хотя бы один список, который содержит сумму всех элементов вложенного листа
         // равную 12
-        boolean anyMatch = lists.stream()
-                .anyMatch(e -> e.stream().reduce((a, b) -> a + b).orElse(0) == 12);
-        System.out.println(anyMatch);
-
-        String name = null;
-        fillData(name);
-        System.out.println(name);
-
-    }
 
     public static void fillData(String name) {
         name = "Yuri";
